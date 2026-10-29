@@ -3,8 +3,6 @@ import { ChevronLeft, CloudOff, X, type LucideIcon } from 'lucide-react-native';
 import type { ReactNode } from 'react';
 import {
   ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -30,13 +28,8 @@ export function Screen({
 }) {
   return (
     <SafeAreaView edges={tab ? ['top'] : ['top', 'bottom']} style={[styles.screen, style]}>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      >
-        <OfflineBanner />
-        {children}
-      </KeyboardAvoidingView>
+      <OfflineBanner />
+      {children}
     </SafeAreaView>
   );
 }

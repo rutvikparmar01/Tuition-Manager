@@ -2,9 +2,10 @@ import { signInWithPhoneNumber } from '@react-native-firebase/auth';
 import { router } from 'expo-router';
 import { BookOpen, Check } from 'lucide-react-native';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/Button';
+import { FormScroll } from '@/components/FormScroll';
 import { Field } from '@/components/Field';
 import { Screen } from '@/components/Screen';
 import { authErrorMessage } from '@/lib/authErrors';
@@ -46,7 +47,7 @@ export default function Login() {
 
   return (
     <Screen>
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <FormScroll contentContainerStyle={styles.body}>
         <View style={styles.logo}>
           <BookOpen size={30} color={colors.white} strokeWidth={2} />
         </View>
@@ -82,7 +83,7 @@ export default function Login() {
         />
         <Button title="Send OTP" onPress={sendOtp} loading={sending} style={{ marginTop: 20 }} />
         <Text style={styles.terms}>By continuing you agree to the Terms and Privacy Policy.</Text>
-      </ScrollView>
+      </FormScroll>
     </Screen>
   );
 }

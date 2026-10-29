@@ -1,8 +1,9 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { Button } from '@/components/Button';
+import { FormScroll } from '@/components/FormScroll';
 import { Field } from '@/components/Field';
 import { AppBar, Screen, StickyFooter } from '@/components/Screen';
 import { updateTutorProfile } from '@/data/repo';
@@ -22,7 +23,7 @@ export default function ClassDetails() {
   return (
     <Screen>
       <AppBar title="Class details" />
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <FormScroll contentContainerStyle={styles.body}>
         <Field
           label="Your name"
           value={name}
@@ -46,7 +47,7 @@ export default function ClassDetails() {
           editable={false}
           helper="This is the number you log in with."
         />
-      </ScrollView>
+      </FormScroll>
       <StickyFooter>
         <Button
           title="Save"

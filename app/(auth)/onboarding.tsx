@@ -3,10 +3,11 @@ import { signOut } from '@react-native-firebase/auth';
 import dayjs from 'dayjs';
 import { Clock } from 'lucide-react-native';
 import { Controller, useForm } from 'react-hook-form';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { z } from 'zod';
 
 import { Button } from '@/components/Button';
+import { FormScroll } from '@/components/FormScroll';
 import { DaysSelector } from '@/components/DaysSelector';
 import { Field } from '@/components/Field';
 import { Screen, StickyFooter } from '@/components/Screen';
@@ -74,7 +75,7 @@ export default function Onboarding() {
 
   return (
     <Screen>
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <FormScroll contentContainerStyle={styles.body}>
         <Text style={styles.step}>Step 1 of 2</Text>
         <View style={styles.track}>
           <View style={styles.progress} />
@@ -183,7 +184,7 @@ export default function Onboarding() {
           onPress={() => signOut(auth)}
           style={{ marginTop: 8 }}
         />
-      </ScrollView>
+      </FormScroll>
       <StickyFooter>
         <Button title="Continue" onPress={handleSubmit(onSubmit)} loading={isSubmitting} />
       </StickyFooter>

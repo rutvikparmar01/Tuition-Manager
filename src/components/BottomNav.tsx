@@ -1,4 +1,3 @@
-import * as Haptics from 'expo-haptics';
 import type { BottomTabBarProps } from 'expo-router/tabs';
 import { House, SquareCheck, Users, Wallet, type LucideIcon } from 'lucide-react-native';
 import type { ReactNode } from 'react';
@@ -33,9 +32,7 @@ export function BottomNav({ state, navigateToTab, insets }: BottomTabBarProps) {
             label={tab.label}
             active={active}
             onPress={() => {
-              if (active) return;
-              Haptics.selectionAsync().catch(() => {});
-              navigateToTab(route.key);
+              if (!active) navigateToTab(route.key);
             }}
           >
             <View style={[styles.iconPill, active && styles.iconPillActive]}>

@@ -1,9 +1,10 @@
 import { signInWithPhoneNumber } from '@react-native-firebase/auth';
 import { router } from 'expo-router';
 import { useEffect, useRef, useState, type ComponentRef } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button } from '@/components/Button';
+import { FormScroll } from '@/components/FormScroll';
 import { AppBar, Screen } from '@/components/Screen';
 import { authErrorMessage } from '@/lib/authErrors';
 import { auth, reportError } from '@/lib/firebase';
@@ -70,7 +71,7 @@ export default function Otp() {
   return (
     <Screen>
       <AppBar title="" />
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <FormScroll contentContainerStyle={styles.body}>
         <Text style={type.title}>Enter OTP</Text>
         <Text style={styles.sub}>
           Sent to{' '}
@@ -142,7 +143,7 @@ export default function Otp() {
             />
           )}
         </View>
-      </ScrollView>
+      </FormScroll>
     </Screen>
   );
 }

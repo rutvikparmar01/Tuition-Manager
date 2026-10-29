@@ -11,9 +11,10 @@ import {
   type LucideIcon,
 } from 'lucide-react-native';
 import { useState } from 'react';
-import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/Button';
+import { FormScroll } from '@/components/FormScroll';
 import { Card, Divider } from '@/components/Card';
 import { Field } from '@/components/Field';
 import { Pill } from '@/components/Pill';
@@ -85,7 +86,7 @@ export default function Settings() {
   return (
     <Screen>
       <AppBar title="Settings" />
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <FormScroll contentContainerStyle={styles.body}>
         <View style={styles.plan}>
           <View style={styles.planHeader}>
             <Text style={styles.planLabel}>Your plan</Text>
@@ -241,7 +242,7 @@ export default function Settings() {
         </Card>
 
         <Text style={styles.version}>Version {Constants.expoConfig?.version ?? '—'}</Text>
-      </ScrollView>
+      </FormScroll>
     </Screen>
   );
 }

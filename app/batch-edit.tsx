@@ -2,9 +2,10 @@ import dayjs from 'dayjs';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Clock } from 'lucide-react-native';
 import { useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/Button';
+import { FormScroll } from '@/components/FormScroll';
 import { DaysSelector } from '@/components/DaysSelector';
 import { Field } from '@/components/Field';
 import { AppBar, Screen, StickyFooter } from '@/components/Screen';
@@ -80,7 +81,7 @@ export default function BatchEdit() {
   return (
     <Screen>
       <AppBar title={id ? 'Edit batch' : 'Add batch'} />
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <FormScroll contentContainerStyle={styles.body}>
         <Field
           label="Batch name"
           required
@@ -126,7 +127,7 @@ export default function BatchEdit() {
             style={{ marginTop: 8 }}
           />
         ) : null}
-      </ScrollView>
+      </FormScroll>
       <StickyFooter>
         <Button title="Save batch" onPress={save} />
       </StickyFooter>

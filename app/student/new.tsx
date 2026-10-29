@@ -11,10 +11,11 @@ import {
 } from 'lucide-react-native';
 import { useEffect, useEffectEvent, useRef } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { z } from 'zod';
 
 import { Button } from '@/components/Button';
+import { FormScroll } from '@/components/FormScroll';
 import { Field } from '@/components/Field';
 import { PlanBanner } from '@/components/PlanBanner';
 import { AppBar, LoadingView, Screen, StickyFooter } from '@/components/Screen';
@@ -171,7 +172,7 @@ export default function AddStudent() {
   return (
     <Screen>
       <AppBar title={id ? 'Edit student' : 'Add student'} close />
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <FormScroll contentContainerStyle={styles.body}>
         {!canWrite ? <PlanBanner /> : null}
 
         {!id ? (
@@ -308,7 +309,7 @@ export default function AddStudent() {
             Fee changes apply from next month. This month’s fee stays as recorded.
           </Text>
         ) : null}
-      </ScrollView>
+      </FormScroll>
 
       <StickyFooter>
         <Button
