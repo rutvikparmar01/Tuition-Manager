@@ -1,0 +1,34 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    // The only subscription a client may write is a fresh 30-day trial at sign-up.
+    // 'active' / 'expired' are set by a trusted backend (e.g. a RevenueCat webhook → Cloud Function).
+    function isNewTrial(sub) {
+      return sub is map
+        && sub.keys().hasOnly(['status', 'trialEndsAt'])
+        && sub.status == 'trial'
+        && sub.trialEndsAt is timestamp
+        && sub.trialEndsAt <= request.time + duration.value(31, 'd');
+    }
+
+    match /tutors/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && isNewTrial(request.resource.data.subscription);
+      allow update: if isOwner(uid)
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['subscription']);
+      // Deleting the tutor doc would let a client re-create it with a fresh trial.
+      allow delete: if false;
+
+      match /{collection}/{docId} {
+        allow read, write: if isOwner(uid)
+          && collection in ['batches', 'students', 'attendance', 'fees'];
+      }
+    }
+  }
+}
