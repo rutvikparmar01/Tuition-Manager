@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "677036629557",
+    "project_id": "tuition-manager-e1791",
+    "storage_bucket": "tuition-manager-e1791.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677036629557:android:1432b627e89290b5241b7c",
+        "android_client_info": {
+          "package_name": "com.rutvik.tuitionmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDBKe7chzXcSGRA_7oNOvkOyY9JD6FJQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
