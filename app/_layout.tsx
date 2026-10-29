@@ -49,6 +49,8 @@ export default function RootLayout() {
           <Stack
             screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg } }}
           >
+            {/* Unguarded so `/` always resolves; it redirects based on the session. */}
+            <Stack.Screen name="index" />
             <Stack.Protected guard={hasTutor}>
               <Stack.Screen name="(tabs)" />
               <Stack.Screen name="student/[id]" />

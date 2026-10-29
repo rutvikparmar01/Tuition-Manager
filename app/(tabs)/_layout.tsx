@@ -13,7 +13,7 @@ export default function TabsLayout() {
       tabBar={(props) => <BottomNav {...props} />}
       screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: colors.bg } }}
     >
-      <Tabs.Screen name="index" />
+      <Tabs.Screen name="home" />
       <Tabs.Screen name="attendance" />
       <Tabs.Screen name="fees" />
       <Tabs.Screen name="students" />

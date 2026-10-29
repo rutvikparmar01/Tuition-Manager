@@ -7,7 +7,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, sizes } from '@/theme';
 
 const TABS: Record<string, { label: string; icon: LucideIcon }> = {
-  index: { label: 'Home', icon: House },
+  home: { label: 'Home', icon: House },
   attendance: { label: 'Attendance', icon: SquareCheck },
   fees: { label: 'Fees', icon: Wallet },
   students: { label: 'Students', icon: Users },

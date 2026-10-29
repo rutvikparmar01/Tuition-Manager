@@ -40,6 +40,7 @@
     "zustand": "^5.0.16"
   },
   "devDependencies": {
+    "@testing-library/react-native": "^14.1.0",
     "@types/node": "^22.20.5",
     "@types/react": "~19.3.0",
     "eslint": "^9.39.5",
@@ -47,6 +48,8 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",
     "firebase-admin": "^14.5.0",
+    "jest": "^30.5.2",
+    "jest-expo": "^58.0.13",
     "prettier": "^3.9.10",
     "tsx": "^4.23.15",
     "typescript": "~6.0.3"
@@ -58,7 +61,11 @@
     "lint": "expo lint",
     "format": "prettier --write .",
     "seed": "tsx scripts/seed.ts",
-    "emulators": "firebase emulators:start --only auth,firestore"
+    "emulators": "firebase emulators:start --only auth,firestore",
+    "test": "jest"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "jest-expo"
+  }
 }
